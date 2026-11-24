@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Проходная · Диаграмма Ганта · Интерактивный план V2</title>
+<meta name="description" content="Интерактивная диаграмма Ганта проекта «Проходная»: пакеты, операции по часам, исполнители, передачи результата, вехи и критический путь.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2317213c'/%3E%3Ctext x='16' y='22' font-family='Segoe UI,sans-serif' font-size='17' font-weight='700' fill='%23fff' text-anchor='middle'%3EП%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="page">
+  <section class="intro">
+    <div>
+      <p class="eyebrow">Интерактивный план · версия 2</p>
+      <div class="intro-row">
+        <h1>Диаграмма Ганта проекта «Проходная»</h1>
+        <p class="lede" id="lede"></p>
+      </div>
+    </div>
+    <nav class="topnav" aria-label="Ссылки проекта">
+      <a href="https://proxodnaya-gantt.comfytamarind2.chatgpt.site/" target="_blank" rel="noopener">Прежняя версия</a>
+      <a href="https://github.com/orgs/druni-bratani/projects/1/views/7" target="_blank" rel="noopener">Доска команды</a>
+      <a href="https://github.com/druni-bratani/proxodnaya/blob/main/docs/schedule.md" target="_blank" rel="noopener">Расписание</a>
+      <button type="button" class="icon-btn" id="theme" aria-label="Переключить тему"></button>
+    </nav>
+  </section>
+
+  <section class="summary" aria-label="Показатели плана">
+    <dl class="kpis" id="kpis"></dl>
+    <div class="gates" id="gates" role="group" aria-label="Вехи"></div>
+  </section>
+
+  <section class="workspace">
+    <div class="chart-card">
+      <div class="toolbar" role="toolbar" aria-label="Управление диаграммой">
+        <div class="group">
+          <div class="seg" role="group" aria-label="Уровень детализации">
+            <button type="button" data-level="packages" aria-pressed="true">Пакеты</button>
+            <button type="button" data-level="operations" aria-pressed="false">Операции</button>
+          </div>
+        </div>
+        <div class="group">
+          <div class="seg" role="group" aria-label="Раскраска полос">
+            <button type="button" data-lens="section" aria-pressed="true">Разделы</button>
+            <button type="button" data-lens="owner" aria-pressed="false">Исполнители</button>
+          </div>
+          <label class="field">
+            <span class="visually-hidden">Исполнитель</span>
+            <select id="owner"><option value="">Все исполнители</option></select>
+          </label>
+        </div>
+        <div class="group push">
+          <button type="button" class="toggle" id="critical" aria-pressed="false"><i class="sw sw-crit" aria-hidden="true"></i>Критический путь</button>
+          <button type="button" class="toggle" id="links" aria-pressed="true">Связи</button>
+          <button type="button" class="toggle" id="handoffs" aria-pressed="false" hidden>Все передачи</button>
+          <div class="zoom" role="group" aria-label="Масштаб">
+            <button type="button" id="zoom-out" aria-label="Уменьшить">−</button>
+            <button type="button" id="zoom-fit">Сброс</button>
+            <button type="button" id="zoom-in" aria-label="Увеличить">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="chart-scroll" id="scroll" tabindex="0" aria-label="Диаграмма Ганта">
+        <div class="chart">
+          <div class="chead" id="chead"></div>
+          <div class="cbody" id="cbody"></div>
+        </div>
+      </div>
+      <div class="legend" id="legend"></div>
+    </div>
+    <aside class="inspector" id="inspector" aria-live="polite" aria-label="Детали выбранной работы">
+      <button type="button" class="inspector-close" id="inspector-close" aria-label="Закрыть панель деталей"></button>
+      <div id="inspector-body"></div>
+    </aside>
+  </section>
+
+  <section class="load-card" aria-labelledby="load-title">
+    <div class="load-head">
+      <h2 id="load-title">Загрузка исполнителей по неделям</h2>
+      <p id="load-note"></p>
+    </div>
+    <div class="load-scroll"><div class="load" id="load"></div></div>
+  </section>
+
+  <footer class="footer">
+    <p id="footer-note"></p>
+    <p>Источник дат — <a href="https://github.com/druni-bratani/proxodnaya/blob/main/docs/schedule.md" target="_blank" rel="noopener">базовый календарь</a>, актуальные сроки ведёт <a href="https://github.com/orgs/druni-bratani/projects/1/views/7" target="_blank" rel="noopener">доска команды</a>.</p>
+  </footer>
+</main>
+
+<div class="tooltip" id="tooltip" role="tooltip" hidden></div>
+
+<script src="data.js"></script>
+<script src="model.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
