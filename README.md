@@ -1,6 +1,6 @@
 # Проходная · Диаграмма Ганта · Интерактивный план V2
 
-Интерактивная диаграмма Ганта учебного проекта «Проходная» — вторая версия плана, рядом с [прежней](https://proxodnaya-gantt.comfytamarind2.chatgpt.site/). Ссылка на неё стоит в [расписании проекта](https://github.com/druni-bratani/proxodnaya/blob/main/docs/schedule.md).
+Интерактивная диаграмма Ганта учебного проекта «Проходная» — вторая версия плана, рядом с [прежней](https://proxodnaya-gantt.comfytamarind2.chatgpt.site/). Ссылку на неё ещё нужно добавить в [расписание проекта](https://github.com/druni-bratani/proxodnaya/blob/main/docs/schedule.md): готовое изменение лежит в `pull-request/`.
 
 **Открыть:** [bedoevsky.github.io/proxodnaya-gantt-v2](https://bedoevsky.github.io/proxodnaya-gantt-v2/)
 
@@ -22,6 +22,7 @@
 | `data.js` | Снимок плана. Генерируется скриптом, вручную не правится |
 | `sync-data.mjs` | Сборка снимка из реестров основного репозитория |
 | `test/model.test.mjs` | Проверки модели и снимка |
+| `pull-request/` | Готовое изменение `docs/schedule.md` основного репозитория: патч и текст pull request |
 
 ## Открыть локально
 
